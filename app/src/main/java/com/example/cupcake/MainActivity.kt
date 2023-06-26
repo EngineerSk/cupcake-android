@@ -30,12 +30,21 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    private val navHostFragment by lazy {
+        supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
+    }
+
+    private val navController by lazy {
+        navHostFragment.navController
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
-        val navController = navHostFragment.navController
         setupActionBarWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

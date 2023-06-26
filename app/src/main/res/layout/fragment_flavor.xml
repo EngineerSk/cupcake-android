@@ -51,7 +51,7 @@
                     android:id="@+id/vanilla"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="@{orderViewModel.flavour.equals(@string/vanilla)}"
+                    android:checked="@{orderViewModel.flavor.equals(@string/vanilla)}"
                     android:onClick="@{()->orderViewModel.setFlavour(@string/vanilla)}"
                     android:text="@string/vanilla" />
 
@@ -59,7 +59,7 @@
                     android:id="@+id/chocolate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="@{orderViewModel.flavour.equals(@string/chocolate)}"
+                    android:checked="@{orderViewModel.flavor.equals(@string/chocolate)}"
                     android:onClick="@{()->orderViewModel.setFlavour(@string/chocolate)}"
                     android:text="@string/chocolate" />
 
@@ -67,7 +67,7 @@
                     android:id="@+id/red_velvet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="@{orderViewModel.flavour.equals(@string/red_velvet)}"
+                    android:checked="@{orderViewModel.flavor.equals(@string/red_velvet)}"
                     android:onClick="@{()->orderViewModel.setFlavour(@string/red_velvet)}"
                     android:text="@string/red_velvet" />
 
@@ -75,7 +75,7 @@
                     android:id="@+id/salted_caramel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="@{orderViewModel.flavour.equals(@string/salted_caramel)}"
+                    android:checked="@{orderViewModel.flavor.equals(@string/salted_caramel)}"
                     android:onClick="@{()->orderViewModel.setFlavour(@string/salted_caramel)}"
                     android:text="@string/salted_caramel" />
 
@@ -83,7 +83,7 @@
                     android:id="@+id/coffee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="@{orderViewModel.flavour.equals(@string/coffee)}"
+                    android:checked="@{orderViewModel.flavor.equals(@string/coffee)}"
                     android:onClick="@{()->orderViewModel.setFlavour(@string/coffee)}"
                     android:text="@string/coffee" />
             </RadioGroup>
@@ -98,7 +98,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/flavor_options" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/subtotal"
                 style="@style/Widget.Cupcake.TextView"
                 android:layout_width="wrap_content"
@@ -109,17 +109,29 @@
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 tools:text="Subtotal $5.00" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/next_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/side_margin"
+                android:layout_marginStart="@dimen/side_margin"
                 android:text="@string/next"
                 android:onClick="@{()->fragment.goToNextScreen()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cancel_button"
                 app:layout_constraintTop_toBottomOf="@id/subtotal" />
+
+            <com.google.android.material.button.MaterialButton
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/cancel_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/next_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/next_button"
+                android:onClick="@{()->fragment.cancelOrder()}"
+                android:text="@string/cancel"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

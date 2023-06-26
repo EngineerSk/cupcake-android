@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/order_summary_margin"
-                    android:text="@{orderViewModel.flavour}"
+                    android:text="@{orderViewModel.flavor}"
                     tools:text="Chocolate" />
 
                 <View
@@ -140,6 +140,15 @@
                 android:layout_marginTop="@dimen/side_margin"
                 android:onClick="@{()->fragment.sendOrder()}"
                 android:text="@string/send" />
+
+            <Button
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/cancel_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->fragment.cancelOrder()}"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:text="@string/cancel"/>
 
         </LinearLayout>
     </ScrollView>
