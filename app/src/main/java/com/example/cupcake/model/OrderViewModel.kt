@@ -33,7 +33,7 @@ class OrderViewModel : ViewModel() {
     fun resetOrder() {
         _quantity.value = 0
         _flavor.value = ""
-        _date.value = ""
+        _date.value = dateOptions[0]
         _price.value = 0.00
     }
 
@@ -57,7 +57,7 @@ class OrderViewModel : ViewModel() {
         updatePrice()
     }
 
-    val dateOptions = getPickupOptions()
+    val dateOptions:List<String> get() = getPickupOptions()
 
     private fun getPickupOptions(): List<String> {
         val options = mutableListOf<String>()
